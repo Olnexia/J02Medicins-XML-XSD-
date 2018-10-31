@@ -1,10 +1,12 @@
 package com.epam.xmlparsing.entity;
 
 import java.util.List;
+import java.util.Map;
 
-public class Medicins {
+public abstract class Medicins {
     private String name;
-    private String manufactorer;
-    private MedGroup group;
-    private List<String> analogs;
+    private String pharm;
+    private Certificate certificate;
+    private MedicalFulfillment fulfillment;
+    private MedicalPackage medicalPackage;
 }
