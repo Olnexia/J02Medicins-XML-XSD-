@@ -1,17 +1,17 @@
 package com.epam.xmlparsing.entity;
 
-public class Medicins {
+public class TherapeuticDrug {
     private String name;
     private String pharm;
+    private int amount;
+    private double price;
+    private double dosage;
+    private int periodicity;
     private Certificate certificate;
     private MedicalFulfillment fulfillment;
     private PackageType packageType;
-    private int amount;
-    private double price;
-    private int dosage;
-    private int periodicity;
 
-    public Medicins(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment, PackageType packageType, int amount, double price, int dosage, int periodicity) {
+    public TherapeuticDrug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment, PackageType packageType, int amount, double price, int dosage, int periodicity) {
         this.name = name;
         this.pharm = pharm;
         this.certificate = certificate;
@@ -51,7 +51,7 @@ public class Medicins {
         return price;
     }
 
-    public int getDosage() {
+    public double getDosage() {
         return dosage;
     }
 
