@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<medicins>
+    <drug name ="aspirine">
+        <dosage>500</dosage>
+        <pharm>BelMed</pharm>
+        <amount>10</amount>
+        <price>0.5</price>
+        <certificate>
+            <id>42</id>
+            <issue-date>02.10.1990</issue-date>
+            <expiration-date>02.10.2020</expiration-date>
+            <registering-organization>Health Ministry</registering-organization>
+        </certificate>
+        <fulfillment>PILLS</fulfillment>
+    </drug>
+    <vitamin name = "vitamin C">
+        <dosage>500</dosage>
+        <pharm>BelMed</pharm>
+        <amount>30</amount>
+        <price>5</price>
+        <daily-need>60</daily-need>
+        <certificate>
+            <id>425</id>
+            <issue-date>02.10.1990</issue-date>
+            <expiration-date>02.10.2020</expiration-date>
+            <registering-organization>Health Ministry</registering-organization>
+        </certificate>
+        <fulfillment>PILLS</fulfillment>
+    </vitamin>
+    <prescriptional-drug name = "azitromicine">
+        <dosage>500</dosage>
+        <pharm>BelMed</pharm>
+        <amount>3</amount>
+        <price>10</price>
+        <addictive>false</addictive>
+        <narcotical>false</narcotical>
+        <certificate>
+            <id>346</id>
+            <issue-date>02.10.1990</issue-date>
+            <expiration-date>02.10.2020</expiration-date>
+            <registering-organization>Health Ministry</registering-organization>
+        </certificate>
+        <fulfillment>PILLS</fulfillment>
+    </prescriptional-drug>
+</medicins>

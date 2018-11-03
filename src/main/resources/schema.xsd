@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
+<?xml version="1.1" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/TR/xmlschema11-1/"
+        targetNamespace=""
                 elementFormDefault="qualified">
     <element name = "Medicins">
         <complexType>
             <all>
-                <element name = "therapeutic drug"
-                         type="tns:TherapeuticDrug"
+                <element name = "drug"
+                         type="tns:Drug"
                          minOccurs = "2"
                          maxOccurs="unbounded" />
-                <element name = "prescriptional therapeutic drug"
-                         type="tns:PrescriptionalTherapeuticDrug"
+                <element name = "prescriptional-drug"
+                         type="tns:PrescriptionalDrug"
                          minOccurs="2"
                          maxOccurs="unbounded" />
                 <element name = "vitamin"
                          type="tns:Vitamin"
                          minOccurs="2"
                          maxOccurs="unbounded" />
-            </all>
+            </>
         </complexType>
     </element>
 
@@ -25,9 +26,8 @@
             <element name = "name" type="string"/>
             <element name = "pharm" type="string"/>
             <element name = "amount" type="int"/>
-            <element name = "price" type="double"/>
+            <element name = "price" type="decimal"/>
             <element name = "dosage" type="double"/>
-            <element name = "periodicity" type="int"/>
             <element name = "certificate" type="tns:Certificate"/>
             <attribure name = "medical fulfillment" use = "optional">
                 <simpleType>
@@ -41,7 +41,7 @@
             </attribure>
         </sequence>
     </complexType>
-    <complexType name="PrescriptionalTherapeuticDrug">
+    <complexType name="PrescriptionalDrug">
 
     </complexType>
     <complexType name="Vitamin">

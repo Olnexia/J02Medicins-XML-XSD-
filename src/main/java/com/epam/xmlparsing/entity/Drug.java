@@ -1,30 +1,38 @@
 package com.epam.xmlparsing.entity;
 
-import com.epam.xmlparsing.entity.Certificate;
-import com.epam.xmlparsing.entity.MedicalFulfillment;
-import com.epam.xmlparsing.entity.PackageType;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
 
-public class TherapeuticDrug {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "drug")
+public class Drug {
+    @XmlAttribute(name ="name")
     private String name;
+    @XmlElement(name ="pharm")
     private String pharm;
+    @XmlElement(name ="amount")
     private int amount;
-    private double price;
+    @XmlElement(name ="price")
+    private BigDecimal price;
+    @XmlElement(name ="dosage")
     private double dosage;
-    private int periodicity;
+    @XmlElement(name ="certificate")
     private Certificate certificate;
+    @XmlElement(name ="fulfillment")
     private MedicalFulfillment fulfillment;
-    private PackageType packageType;
 
-    public TherapeuticDrug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment, PackageType packageType, int amount, double price, int dosage, int periodicity) {
+    public Drug(){
+
+    }
+
+    public Drug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment, int amount, BigDecimal price, int dosage) {
         this.name = name;
         this.pharm = pharm;
         this.certificate = certificate;
         this.fulfillment = fulfillment;
-        this.packageType = packageType;
         this.amount = amount;
         this.price = price;
         this.dosage = dosage;
-        this.periodicity = periodicity;
     }
 
     public String getName() {
@@ -43,23 +51,15 @@ public class TherapeuticDrug {
         return fulfillment;
     }
 
-    public PackageType getPackageType() {
-        return packageType;
-    }
-
     public int getAmount() {
         return amount;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
     public double getDosage() {
         return dosage;
-    }
-
-    public int getPeriodicity() {
-        return periodicity;
     }
 }
