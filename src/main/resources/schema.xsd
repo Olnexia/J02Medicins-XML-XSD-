@@ -1,6 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/TR/xmlschema11-1/"
-        targetNamespace=""
+        targetNamespace="htttp://example.com/parts"
+        xmlns:tns = "htttp://example.com/parts"
                 elementFormDefault="qualified">
     <element name = "Medicins">
         <complexType>
@@ -42,7 +43,9 @@
         </sequence>
     </complexType>
     <complexType name="PrescriptionalDrug">
+        <restriction base="tns:">
 
+        </restriction>
     </complexType>
     <complexType name="Vitamin">
 

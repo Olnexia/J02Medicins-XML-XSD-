@@ -2,7 +2,6 @@ package com.epam.xmlparsing.parsers;
 
 import com.epam.xmlparsing.entity.*;
 import com.epam.xmlparsing.exceptions.ParserException;
-import javafx.scene.input.DataFormat;
 import org.junit.Assert;
 import org.junit.Test;
 
