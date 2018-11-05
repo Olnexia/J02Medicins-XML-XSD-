@@ -22,7 +22,7 @@ public class Drug {
     private MedicalFulfillment fulfillment;
 
     public Drug(){
-
+        this.certificate = new Certificate();
     }
 
     public Drug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment, int amount, BigDecimal price, int dosage) {
@@ -61,5 +61,33 @@ public class Drug {
 
     public double getDosage() {
         return dosage;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPharm(String pharm) {
+        this.pharm = pharm;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setDosage(double dosage) {
+        this.dosage = dosage;
+    }
+
+    public void setCertificate(Certificate certificate) {
+        this.certificate = certificate;
+    }
+
+    public void setFulfillment(MedicalFulfillment fulfillment) {
+        this.fulfillment = fulfillment;
     }
 }

@@ -1,8 +1,9 @@
-package com.epam.xmlparsing.parsers;
+package com.epam.xmlparsing.parser.jaxbparser;
 
 import com.epam.xmlparsing.entity.Drug;
 import com.epam.xmlparsing.entity.Medicins;
-import com.epam.xmlparsing.exceptions.ParserException;
+import com.epam.xmlparsing.exception.ParserException;
+import com.epam.xmlparsing.parser.Parser;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

@@ -1,53 +1,81 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/TR/xmlschema11-1/"
-        targetNamespace="htttp://example.com/parts"
-        xmlns:tns = "htttp://example.com/parts"
+        targetNamespace="http://www.example.com/medicins"
+        xmlns:tns = "http://www.example.com/medicins"
                 elementFormDefault="qualified">
     <element name = "Medicins">
         <complexType>
-            <all>
-                <element name = "drug"
-                         type="tns:Drug"
+            <sequence>
+                <element ref = "tns:drug"
                          minOccurs = "2"
-                         maxOccurs="unbounded" />
-                <element name = "prescriptional-drug"
-                         type="tns:PrescriptionalDrug"
-                         minOccurs="2"
-                         maxOccurs="unbounded" />
-                <element name = "vitamin"
-                         type="tns:Vitamin"
-                         minOccurs="2"
-                         maxOccurs="unbounded" />
-            </>
+                         maxOccurs = "unbounded"/>
+                <!--<element name = "drug"-->
+                         <!--type="tns:Drug"-->
+                         <!--minOccurs = "2"-->
+                         <!--maxOccurs="unbounded" />-->
+                <!--<element name = "prescriptional-drug"-->
+                         <!--type="tns:PrescriptionalDrug"-->
+                         <!--minOccurs="2"-->
+                         <!--maxOccurs="unbounded" />-->
+                <!--<element name = "vitamin"-->
+                         <!--type="tns:Vitamin"-->
+                         <!--minOccurs="2"-->
+                         <!--maxOccurs="unbounded" />-->
+            </sequence>
         </complexType>
     </element>
 
-    <complexType name="TherapeuticDrug">
+    <complexType name="Drug">
         <sequence>
             <element name = "name" type="string"/>
             <element name = "pharm" type="string"/>
             <element name = "amount" type="int"/>
             <element name = "price" type="decimal"/>
             <element name = "dosage" type="double"/>
-            <element name = "certificate" type="tns:Certificate"/>
+            <atrtibute name = "certificate" type="tns:Certificate" use = "required"/>
             <attribure name = "medical fulfillment" use = "optional">
                 <simpleType>
                     <restriction base="string">
-                        <enumeration value="PILL"></enumeration>
-                        <enumeration value="CAPSULE"></enumeration>
-                        <enumeration value="POWDER"></enumeration>
-                        <enumeration value="DROPS"></enumeration>
+                        <enumeration value="PILL"/>
+                        <enumeration value="CAPSULE"/>
+                        <enumeration value="POWDER"/>
+                        <enumeration value="DROPS"/>
                     </restriction>
                 </simpleType>
             </attribure>
         </sequence>
     </complexType>
+
     <complexType name="PrescriptionalDrug">
-        <restriction base="tns:">
-
-        </restriction>
+        <complexContext>
+            <extension base = "tns:Drug">
+                <sequence>
+                    <element name = "addictive" type = "boolean"/>
+                    <element name = "narcotical" type = "boolean"/>
+                </sequence>
+            </extension>
+        </complexContext>
     </complexType>
+
     <complexType name="Vitamin">
-
+        <complexContext>
+            <extension base = "tns:Drug">
+                <element name = "daily-need" type = "int"/>
+            </extension>
+        </complexContext>
     </complexType>
+
+    <element name ="drug" type = "tns:Drug" />
+    <element name = "prescriptional-drug" type = "tns:PrescriptionalDrug" />
+    <element name = "vitamin" type = "tns:Vitamin" />
+
+    <complexType name = "Certificate">
+        <sequence>
+            <element name = "id" type = "long"/>
+            <element name = "issue-date" type = "string"/>
+            <element name = "expiration-date" type = "string"/>
+            <element name = "registering-organization" type = "string"/>
+        </sequence>
+    </complexType>
+
 </schema>

@@ -31,4 +31,13 @@ public class PrescriptionalDrug extends Drug {
     public boolean isNarcotical() {
         return narcotical;
     }
+
+    public void setAddictive(boolean addictive) {
+        this.addictive = addictive;
+    }
+
+    public void setNarcotical(boolean narcotical) {
+        this.narcotical = narcotical;
+    }
 }
+

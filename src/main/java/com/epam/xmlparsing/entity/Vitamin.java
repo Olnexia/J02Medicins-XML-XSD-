@@ -23,4 +23,8 @@ public class Vitamin extends Drug {
     public int getDailyNeed() {
         return dailyNeed;
     }
+
+    public void setDailyNeed(int dailyNeed) {
+        this.dailyNeed = dailyNeed;
+    }
 }

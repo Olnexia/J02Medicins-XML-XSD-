@@ -1,7 +1,8 @@
-package com.epam.xmlparsing.parsers;
+package com.epam.xmlparsing.parser;
 
 import com.epam.xmlparsing.entity.*;
-import com.epam.xmlparsing.exceptions.ParserException;
+import com.epam.xmlparsing.exception.ParserException;
+import com.epam.xmlparsing.parser.jaxbparser.JaxbParser;
 import org.junit.Assert;
 import org.junit.Test;
 

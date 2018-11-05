@@ -1,45 +1,49 @@
 <?xml version="1.0" ?>
-<medicins>
-    <drug name ="aspirine">
-        <dosage>500</dosage>
-        <pharm>BelMed</pharm>
-        <amount>10</amount>
-        <price>0.5</price>
-        <certificate>
-            <id>42</id>
-            <issue-date>02.10.1990</issue-date>
-            <expiration-date>02.10.2020</expiration-date>
-            <registering-organization>Health Ministry</registering-organization>
-        </certificate>
-        <fulfillment>PILLS</fulfillment>
-    </drug>
-    <vitamin name = "vitamin C">
-        <dosage>500</dosage>
-        <pharm>BelMed</pharm>
-        <amount>30</amount>
-        <price>5</price>
-        <daily-need>60</daily-need>
-        <certificate>
-            <id>425</id>
-            <issue-date>02.10.1990</issue-date>
-            <expiration-date>02.10.2020</expiration-date>
-            <registering-organization>Health Ministry</registering-organization>
-        </certificate>
-        <fulfillment>PILLS</fulfillment>
-    </vitamin>
-    <prescriptional-drug name = "azitromicine">
-        <dosage>500</dosage>
-        <pharm>BelMed</pharm>
-        <amount>3</amount>
-        <price>10</price>
-        <addictive>false</addictive>
-        <narcotical>false</narcotical>
-        <certificate>
-            <id>346</id>
-            <issue-date>02.10.1990</issue-date>
-            <expiration-date>02.10.2020</expiration-date>
-            <registering-organization>Health Ministry</registering-organization>
-        </certificate>
-        <fulfillment>PILLS</fulfillment>
-    </prescriptional-drug>
+<medicins xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.example.com/medicins"
+          xsi:schemaLocation="http://www.example.com/medicins schema.xsd">
+    <xsi:drug name ="aspirine">
+        <xsi:dosage>500</xsi:dosage>
+        <xsi:pharm>BelMed</xsi:pharm>
+        <xsi:amount>10</xsi:amount>
+        <xsi:price>0.5</xsi:price>
+        <xsi:certificate>
+            <xsi:id>42</xsi:id>
+            <xsi:issue-date>02.10.1990</xsi:issue-date>
+            <xsi:expiration-date>02.10.2020</xsi:expiration-date>
+            <xsi:registering-organization>Health Ministry</xsi:registering-organization>
+        </xsi:certificate>
+        <xsi:fulfillment>pills</xsi:fulfillment>
+    </xsi:drug>
+
+    <xsi:vitamin name = "vitamin C">
+        <xsi:dosage>500</xsi:dosage>
+        <xsi:pharm>BelMed</xsi:pharm>
+        <xsi:amount>30</xsi:amount>
+        <xsi:price>5</xsi:price>
+        <xsi:daily-need>60</xsi:daily-need>
+        <xsi:certificate>
+            <xsi:id>425</xsi:id>
+            <xsi:issue-date>02.10.1990</xsi:issue-date>
+            <xsi:expiration-date>02.10.2020</xsi:expiration-date>
+            <xsi:registering-organization>Health Ministry</xsi:registering-organization>
+        </xsi:certificate>
+        <xsi:fulfillment>pills</xsi:fulfillment>
+    </xsi:vitamin>
+
+    <xsi:prescriptional-drug name = "azitromicine">
+        <xsi:dosage>500</xsi:dosage>
+        <xsi:pharm>BelMed</xsi:pharm>
+        <xsi:amount>3</xsi:amount>
+        <xsi:price>10</xsi:price>
+        <xsi:addictive>false</xsi:addictive>
+        <xsi:narcotical>false</xsi:narcotical>
+        <xsi:certificate>
+            <xsi:id>346</xsi:id>
+            <xsi:issue-date>02.10.1990</xsi:issue-date>
+            <xsi:expiration-date>02.10.2020</xsi:expiration-date>
+            <xsi:registering-organization>Health Ministry</xsi:registering-organization>
+        </xsi:certificate>
+        <xsi:fulfillment>pills</xsi:fulfillment>
+    </xsi:prescriptional-drug>
 </medicins>

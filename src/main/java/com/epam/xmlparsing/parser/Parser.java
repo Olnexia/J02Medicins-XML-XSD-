@@ -1,7 +1,7 @@
-package com.epam.xmlparsing.parsers;
+package com.epam.xmlparsing.parser;
 
 import com.epam.xmlparsing.entity.Drug;
-import com.epam.xmlparsing.exceptions.ParserException;
+import com.epam.xmlparsing.exception.ParserException;
 
 import java.util.List;
 
