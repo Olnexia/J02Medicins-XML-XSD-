@@ -29,20 +29,24 @@ public class MedicinsHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
-        if("drug".equals(localName)){
-            current = new Drug();
-            current.setName(attributes.getValue(0));
-        } else if( "vitamin".equals(localName)) {
-            current = new Vitamin();
-            current.setName(attributes.getValue(0));
-        } else if("prescriptional-drug".equals(localName)){
-            current = new PrescriptionalDrug();
-            current.setName(attributes.getValue(0));
-        } else{
-            MedicinsEnum temp = MedicinsEnum.valueOf(localName.toUpperCase().replaceAll("-","_"));
-            if(withText.contains(temp)){
-                currentEnum = temp;
-            }
+        switch(localName){
+            case "drug":
+                current = new Drug();
+                current.setName(attributes.getValue(0));
+                break;
+            case "vitamin":
+                current = new Vitamin();
+                current.setName(attributes.getValue(0));
+                break;
+            case "prescriptional-drug":
+                current = new PrescriptionalDrug();
+                current.setName(attributes.getValue(0));
+                break;
+                default:
+                    MedicinsEnum temp = MedicinsEnum.valueOf(localName.toUpperCase().replaceAll("-","_"));
+                    if(withText.contains(temp)){
+                        currentEnum = temp;
+                    }
         }
     }
 

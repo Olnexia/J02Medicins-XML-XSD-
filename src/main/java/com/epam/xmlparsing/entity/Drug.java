@@ -1,6 +1,7 @@
 package com.epam.xmlparsing.entity;
 
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -18,6 +19,7 @@ public class Drug {
     private double dosage;
     @XmlElement(name ="certificate")
     private Certificate certificate;
+    @XmlJavaTypeAdapter(value = FulfillmentAdapter.class)
     @XmlElement(name ="fulfillment")
     private MedicalFulfillment fulfillment;
 

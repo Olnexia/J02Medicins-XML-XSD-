@@ -13,7 +13,7 @@
             <xsi:expiration-date>02.10.2020</xsi:expiration-date>
             <xsi:registering-organization>Health Ministry</xsi:registering-organization>
         </xsi:certificate>
-        <xsi:fulfillment>PILLS</xsi:fulfillment>
+        <xsi:fulfillment>pills</xsi:fulfillment>
     </xsi:drug>
 
     <xsi:vitamin name = "vitamin C">
@@ -28,7 +28,7 @@
             <xsi:expiration-date>02.10.2020</xsi:expiration-date>
             <xsi:registering-organization>Health Ministry</xsi:registering-organization>
         </xsi:certificate>
-        <xsi:fulfillment>PILLS</xsi:fulfillment>
+        <xsi:fulfillment>pills</xsi:fulfillment>
     </xsi:vitamin>
 
     <xsi:prescriptional-drug name = "azitromicine">
@@ -44,6 +44,6 @@
             <xsi:expiration-date>02.10.2020</xsi:expiration-date>
             <xsi:registering-organization>Health Ministry</xsi:registering-organization>
         </xsi:certificate>
-        <xsi:fulfillment>PILLS</xsi:fulfillment>
+        <xsi:fulfillment>pills</xsi:fulfillment>
     </xsi:prescriptional-drug>
 </medicins>

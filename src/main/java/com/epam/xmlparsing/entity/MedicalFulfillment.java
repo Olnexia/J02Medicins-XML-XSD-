@@ -1,7 +1,7 @@
 package com.epam.xmlparsing.entity;
 
 public enum MedicalFulfillment {
-    PILLS("PILLS"),
+    PILLS("pills"),
     CAPSULES("CAPSULE"),
     POWDER("POWDER"),
     DROPS("DROPS");
