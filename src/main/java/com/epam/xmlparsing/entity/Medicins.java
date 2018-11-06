@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "medicins")
+@XmlRootElement(name = "medicins", namespace = "http://www.example.com/medicins")
 public class Medicins {
     @XmlElements({
             @XmlElement(name = "drug",type = Drug.class),

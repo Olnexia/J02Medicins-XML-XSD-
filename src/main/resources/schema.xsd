@@ -3,7 +3,7 @@
         targetNamespace="http://www.example.com/medicins"
         xmlns:tns = "http://www.example.com/medicins"
                 elementFormDefault="qualified">
-    <element name = "Medicins">
+    <element name = "medicins">
         <complexType>
             <sequence>
                 <element ref = "tns:drug"
@@ -36,10 +36,10 @@
             <attribure name = "medical fulfillment" use = "optional">
                 <simpleType>
                     <restriction base="string">
-                        <enumeration value="PILL"/>
-                        <enumeration value="CAPSULE"/>
-                        <enumeration value="POWDER"/>
-                        <enumeration value="DROPS"/>
+                        <enumeration value="pills"/>
+                        <enumeration value="capsule"/>
+                        <enumeration value="powder"/>
+                        <enumeration value="drops"/>
                     </restriction>
                 </simpleType>
             </attribure>
