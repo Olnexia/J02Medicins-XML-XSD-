@@ -1,10 +1,9 @@
 package com.epam.xmlparsing.parser.jaxbparser;
 
+import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.entity.Drug;
 import com.epam.xmlparsing.entity.Medicins;
 import com.epam.xmlparsing.exception.ParserException;
-import com.epam.xmlparsing.parser.Parser;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -19,8 +18,8 @@ public class JaxbParser implements Parser {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             Medicins medicins = (Medicins) jaxbUnmarshaller.unmarshal(file);
             return medicins.getDrugs();
-        }catch (JAXBException ex){
-            throw new ParserException(ex.getMessage(),ex);
+        }catch (JAXBException e){
+            throw new ParserException(e.getMessage(),e);
         }
     }
 }

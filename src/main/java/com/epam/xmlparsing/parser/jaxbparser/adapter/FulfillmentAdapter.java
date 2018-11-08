@@ -1,8 +1,9 @@
-package com.epam.xmlparsing.entity;
+package com.epam.xmlparsing.parser.jaxbparser.adapter;
 
+import com.epam.xmlparsing.entity.MedicalFulfillment;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class FulfillmentAdapter extends XmlAdapter<String,MedicalFulfillment> {
+public class FulfillmentAdapter extends XmlAdapter<String, MedicalFulfillment> {
     @Override
     public MedicalFulfillment unmarshal(String fulfillmentSource){
         String fulfillment = fulfillmentSource.toUpperCase();

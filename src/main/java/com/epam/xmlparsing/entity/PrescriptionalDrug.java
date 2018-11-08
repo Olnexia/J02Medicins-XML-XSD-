@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 public class PrescriptionalDrug extends Drug {
     @XmlElement(name ="addictive")
     private boolean addictive;
-    @XmlElement(name ="narcotical")
-    private boolean narcotical;
+    @XmlElement(name ="narcotic")
+    private boolean narcotic;
 
     public PrescriptionalDrug(){
 
@@ -18,26 +18,26 @@ public class PrescriptionalDrug extends Drug {
 
     public PrescriptionalDrug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment,
                               int amount, BigDecimal price, int dosage,
-                              boolean addictive, boolean narcotical) {
+                              boolean addictive, boolean narcotic) {
         super(name, pharm, certificate, fulfillment, amount, price, dosage);
         this.addictive = addictive;
-        this.narcotical = narcotical;
+        this.narcotic = narcotic;
     }
 
     public boolean isAddictive() {
         return addictive;
     }
 
-    public boolean isNarcotical() {
-        return narcotical;
+    public boolean isNarcotic() {
+        return narcotic;
     }
 
     public void setAddictive(boolean addictive) {
         this.addictive = addictive;
     }
 
-    public void setNarcotical(boolean narcotical) {
-        this.narcotical = narcotical;
+    public void setNarcotic(boolean narcotic) {
+        this.narcotic = narcotic;
     }
 }
 

@@ -1,6 +1,6 @@
 package com.epam.xmlparsing.parser.saxparser;
 
-public enum MedicinsEnum {
+public enum MedicinsElements {
     MEDICINS("medicins"),
     DRUG("drug"),
     VITAMIN("vitamin"),
@@ -17,11 +17,11 @@ public enum MedicinsEnum {
     EXPIRATION_DATE("expiration-date"),
     REGISTERING_ORGANIZATION("registering-organization"),
     ADDICTIVE("addictive"),
-    NARCOTICAL("narcotical"),
+    NARCOTIC("narcotic"),
     DAILY_NEED("daily-need");
 
     private String value;
-    MedicinsEnum(String value){
+    MedicinsElements(String value){
         this.value = value;
     }
 

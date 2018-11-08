@@ -1,12 +1,13 @@
 package com.epam.xmlparsing.entity;
 
+import com.epam.xmlparsing.parser.jaxbparser.adapter.LocalDateAdapter;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
-import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "certificate")
@@ -23,7 +24,6 @@ public class Certificate {
     private String registeringOrganization;
 
     public Certificate(){
-
     }
 
     public Certificate(long id, LocalDate issueDate, LocalDate expirationDate, String registeringOrganization) {

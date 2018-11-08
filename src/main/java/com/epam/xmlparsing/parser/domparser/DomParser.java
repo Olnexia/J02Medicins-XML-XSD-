@@ -8,7 +8,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,91 +18,95 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DomParser implements Parser {
-    private DocumentBuilder documentBuilder;
-
-    public DomParser() throws ParserException{
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setNamespaceAware(true);
-        try{
-            documentBuilder = factory.newDocumentBuilder();
-        }catch(ParserConfigurationException e){
-            throw new ParserException("Exception DOM parser configuration",e);
-        }
-    }
+    private static final int YEAR_INDEX = 2;
+    private static final int MONTH_INDEX = 1;
+    private static final int DAY_INDEX = 0;
 
     public List<Drug> parse(String path) throws ParserException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
         List<Drug> drugList = new ArrayList <>();
-        Document document;
         try{
-            document = documentBuilder.parse(path);
+            DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+            Document document = documentBuilder.parse(path);
             Element root = document.getDocumentElement();
             NodeList rootChildNodesList = root.getChildNodes();
-            for( int i =0; i<rootChildNodesList.getLength();i++){
+            for( int i = 0; i<rootChildNodesList.getLength(); i++){
                 Node node = rootChildNodesList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element currentElement = (Element) node.getChildNodes();
-                    Drug drug = parseRootChild(currentElement);
+                    Drug drug = parseElement(currentElement);
                     drugList.add(drug);
                 }
             }
-        } catch (SAXException e) {
-            throw new ParserException("An exception occurred while parsing the file",e);
-        } catch (IOException e) {
-            throw new ParserException("An exception occurred with the parsing file",e);
+        } catch (SAXException | IOException | ParserConfigurationException |IllegalArgumentException e) {
+            throw new ParserException(e.getMessage(),e);
         }
         return drugList;
     }
 
-    private Drug parseRootChild(Element drugElement){
-        Drug drug = null;
+    private Drug parseElement(Element drugElement){
+        Drug drug;
         String elementName = drugElement.getTagName();
         switch (elementName) {
             case "drug":
                 drug = new Drug();
                 break;
-            case "xsi:presctiptional-drug":
+            case "prescriptional-drug":
                 drug = new PrescriptionalDrug();
                 boolean addictive = Boolean.parseBoolean(getElementTextContent(drugElement,"addictive"));
                 ((PrescriptionalDrug) drug).setAddictive(addictive);
-                boolean narcotical = Boolean.parseBoolean(getElementTextContent(drugElement,"narcotical"));
-                ((PrescriptionalDrug) drug).setNarcotical(narcotical);
+                boolean narcotic = Boolean.parseBoolean(getElementTextContent(drugElement,"narcotic"));
+                ((PrescriptionalDrug) drug).setNarcotic(narcotic);
                 break;
-            case "xsi:vitamin":
+            case "vitamin":
                 drug = new Vitamin();
-                Integer dailyNeed = Integer.parseInt(getElementTextContent(drugElement,"daily-need"));
+                int dailyNeed = Integer.parseInt(getElementTextContent(drugElement,"daily-need"));
                 ((Vitamin) drug).setDailyNeed(dailyNeed);
                 break;
                 default:
-                 //excetion
+                 throw new IllegalArgumentException("Wrong element. One of {drug,prescriptional-drug,vitamin} are expected");
         }
         drug.setName(drugElement.getAttribute("name"));
         drug.setPharm(getElementTextContent(drugElement,"pharm"));
-        MedicalFulfillment fulfillment = MedicalFulfillment.valueOf(getElementTextContent(drugElement,"fulfillment"));
+
+        MedicalFulfillment fulfillment = MedicalFulfillment.valueOf(getElementTextContent(drugElement,"fulfillment").toUpperCase());
         drug.setFulfillment(fulfillment);
-        Integer amount = Integer.parseInt(getElementTextContent(drugElement,"amount"));
+
+        int amount = Integer.parseInt(getElementTextContent(drugElement,"amount"));
         drug.setAmount(amount);
+
         double dosage = Double.parseDouble(getElementTextContent(drugElement,"dosage"));
         drug.setDosage(dosage);
+
         BigDecimal price = new BigDecimal(getElementTextContent(drugElement,"price"));
         drug.setPrice(price);
+
         Certificate certificate = drug.getCertificate();
         Element certificateElement = (Element) drugElement.getElementsByTagName("certificate").item(0);
-        Long id = Long.parseLong(getElementTextContent(certificateElement,"id"));
+
+        long id = Long.parseLong(getElementTextContent(certificateElement,"id"));
         certificate.setId(id);
+
         String issueDateStr= getElementTextContent(certificateElement,"issue-date");
-        String [] issueDate = issueDateStr.split("\\.");
-        certificate.setIssueDate(LocalDate.of(Integer.parseInt(issueDate[2]),Integer.parseInt(issueDate[1]),Integer.parseInt(issueDate[0])));
+        String[] issueDate = issueDateStr.split("\\.");
+        certificate.setIssueDate(LocalDate.of(Integer.parseInt(issueDate[YEAR_INDEX]),
+                                                Integer.parseInt(issueDate[MONTH_INDEX]),
+                                                Integer.parseInt(issueDate[DAY_INDEX])));
+
         String expirationDateStr= getElementTextContent(certificateElement,"expiration-date");
-        String [] expirationDate = expirationDateStr.split("\\.");
-        certificate.setExpirationDate(LocalDate.of(Integer.parseInt(expirationDate[2]),Integer.parseInt(expirationDate[1]),Integer.parseInt(expirationDate[0])));
+        String[] expirationDate = expirationDateStr.split("\\.");
+        certificate.setExpirationDate(LocalDate.of(Integer.parseInt(expirationDate[YEAR_INDEX]),
+                                                    Integer.parseInt(expirationDate[MONTH_INDEX]),
+                                                    Integer.parseInt(expirationDate[DAY_INDEX])));
+
         certificate.setRegisteringOrganization(getElementTextContent(certificateElement,"registering-organization"));
         return drug;
     }
 
     private String getElementTextContent(Element element, String elementName) {
-        NodeList nList = element.getElementsByTagName(elementName);
-        Node node = nList.item(0);
-        String text = node.getTextContent();
-        return text;
+        NodeList nodeList = element.getElementsByTagName(elementName);
+        Node node = nodeList.item(0);
+        return node.getTextContent();
     }
 }

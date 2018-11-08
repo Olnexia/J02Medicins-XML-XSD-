@@ -2,7 +2,8 @@ package com.epam.xmlparsing.parser;
 
 import com.epam.xmlparsing.entity.*;
 import com.epam.xmlparsing.exception.ParserException;
-import com.epam.xmlparsing.parser.jaxbparser.JaxbParser;
+import com.epam.xmlparsing.parser.factory.ParserFactory;
+import com.epam.xmlparsing.parser.factory.ParserTypes;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,14 +17,15 @@ public class JaxbParserTest {
     @Test
     public void shouldParseWhenDataValid() throws ParserException {
         //given
-        Parser jaxbParser = new JaxbParser();
+        ParserFactory factory = new ParserFactory();
+        Parser jaxbParser = factory.getParser(ParserTypes.JAXB);
         //when
         List<Drug> actual = jaxbParser.parse(INPUT_FILE);
         //then
         Assert.assertEquals(3,actual.size());
         Drug first = actual.get(0);
         Assert.assertEquals(first.getClass(),Drug.class);
-        Assert.assertEquals("aspirine",first.getName());
+        Assert.assertEquals("aspirin",first.getName());
         Assert.assertEquals("BelMed",first.getPharm());
         Assert.assertEquals(500,first.getDosage(),DELTA);
         Assert.assertEquals(10,first.getAmount());
@@ -54,7 +56,7 @@ public class JaxbParserTest {
         Drug thirdDrug = actual.get(2);
         Assert.assertEquals(thirdDrug.getClass(),PrescriptionalDrug.class);
         PrescriptionalDrug third = (PrescriptionalDrug)thirdDrug;
-        Assert.assertEquals("azitromicine",third.getName());
+        Assert.assertEquals("azithromycin",third.getName());
         Assert.assertEquals("BelMed",third.getPharm());
         Assert.assertEquals(500,third.getDosage(),DELTA);
         Assert.assertEquals(3,third.getAmount());
@@ -66,7 +68,7 @@ public class JaxbParserTest {
         Assert.assertEquals(LocalDate.parse("1990-10-02"),thirdCertificate.getIssueDate());
         Assert.assertEquals(LocalDate.parse("2020-10-02"),thirdCertificate.getExpirationDate());
         Assert.assertFalse(third.isAddictive());
-        Assert.assertFalse(third.isNarcotical());
+        Assert.assertFalse(third.isNarcotic());
     }
 
 

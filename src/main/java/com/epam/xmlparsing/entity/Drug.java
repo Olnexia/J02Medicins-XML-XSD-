@@ -1,5 +1,7 @@
 package com.epam.xmlparsing.entity;
 
+import com.epam.xmlparsing.parser.jaxbparser.adapter.FulfillmentAdapter;
+
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
