@@ -1,4 +1,4 @@
-package com.epam.xmlparsing.parser.jaxbparser.adapter;
+package com.epam.xmlparsing.parser.jaxb.adapter;
 
 import com.epam.xmlparsing.entity.MedicalFulfillment;
 import javax.xml.bind.annotation.adapters.XmlAdapter;

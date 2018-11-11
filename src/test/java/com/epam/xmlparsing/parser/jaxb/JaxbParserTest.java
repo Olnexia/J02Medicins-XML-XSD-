@@ -1,16 +1,17 @@
-package com.epam.xmlparsing.parser;
+package com.epam.xmlparsing.parser.jaxb;
 
 import com.epam.xmlparsing.entity.*;
 import com.epam.xmlparsing.exception.ParserException;
+import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.parser.factory.ParserFactory;
 import com.epam.xmlparsing.parser.factory.ParserTypes;
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public class DomParserTest {
-
+public class JaxbParserTest {
     private static final String INPUT_FILE = "src/test/resources/input.xml";
     private static final double DELTA = 0.001;
 
@@ -18,9 +19,9 @@ public class DomParserTest {
     public void shouldParseWhenDataValid() throws ParserException {
         //given
         ParserFactory factory = new ParserFactory();
-        Parser domParser = factory.getParser(ParserTypes.DOM);
+        Parser jaxbParser = factory.getParser(ParserTypes.JAXB);
         //when
-        List<Drug> actual = domParser.parse(INPUT_FILE);
+        List<Drug> actual = jaxbParser.parse(INPUT_FILE);
         //then
         Assert.assertEquals(3,actual.size());
         Drug first = actual.get(0);
@@ -38,7 +39,7 @@ public class DomParserTest {
         Assert.assertEquals(LocalDate.parse("2020-10-02"),firstCertificate.getExpirationDate());
 
         Drug secondDrug = actual.get(1);
-        Assert.assertEquals(secondDrug.getClass(), Vitamin.class);
+        Assert.assertEquals(secondDrug.getClass(),Vitamin.class);
         Vitamin second = (Vitamin)secondDrug;
         Assert.assertEquals("vitamin C",second.getName());
         Assert.assertEquals("BelMed",second.getPharm());
@@ -54,7 +55,7 @@ public class DomParserTest {
         Assert.assertEquals(60,second.getDailyNeed());
 
         Drug thirdDrug = actual.get(2);
-        Assert.assertEquals(thirdDrug.getClass(), PrescriptionalDrug.class);
+        Assert.assertEquals(thirdDrug.getClass(),PrescriptionalDrug.class);
         PrescriptionalDrug third = (PrescriptionalDrug)thirdDrug;
         Assert.assertEquals("azithromycin",third.getName());
         Assert.assertEquals("BelMed",third.getPharm());
@@ -70,4 +71,6 @@ public class DomParserTest {
         Assert.assertFalse(third.isAddictive());
         Assert.assertFalse(third.isNarcotic());
     }
+
+
 }

@@ -1,7 +1,6 @@
 package com.epam.xmlparsing.entity;
 
-import com.epam.xmlparsing.parser.jaxbparser.adapter.LocalDateAdapter;
-
+import com.epam.xmlparsing.parser.jaxb.adapter.LocalDateAdapter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;

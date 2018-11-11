@@ -1,7 +1,6 @@
 package com.epam.xmlparsing.entity;
 
-import com.epam.xmlparsing.parser.jaxbparser.adapter.FulfillmentAdapter;
-
+import com.epam.xmlparsing.parser.jaxb.adapter.FulfillmentAdapter;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
@@ -29,7 +28,8 @@ public class Drug {
         this.certificate = new Certificate();
     }
 
-    public Drug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment, int amount, BigDecimal price, int dosage) {
+    public Drug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment,
+                int amount, BigDecimal price, int dosage) {
         this.name = name;
         this.pharm = pharm;
         this.certificate = certificate;

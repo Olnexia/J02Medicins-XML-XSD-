@@ -11,11 +11,10 @@ public class Vitamin extends Drug {
     private int dailyNeed;
 
     public Vitamin(){
-
     }
 
     public Vitamin(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment,
-                   int amount, BigDecimal price, int dosage, int periodicity, int dailyNeed) {
+                   int amount, BigDecimal price, int dosage, int dailyNeed) {
         super(name, pharm, certificate, fulfillment, amount, price, dosage);
         this.dailyNeed = dailyNeed;
     }

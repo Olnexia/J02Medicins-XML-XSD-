@@ -1,4 +1,4 @@
-package com.epam.xmlparsing.parser.saxparser;
+package com.epam.xmlparsing.parser.sax;
 
 public enum MedicinsElements {
     MEDICINS("medicins"),

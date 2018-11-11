@@ -1,4 +1,4 @@
-package com.epam.xmlparsing.parser.domparser;
+package com.epam.xmlparsing.parser.dom;
 
 import com.epam.xmlparsing.entity.*;
 import com.epam.xmlparsing.exception.ParserException;
@@ -70,7 +70,8 @@ public class DomParser implements Parser {
         drug.setName(drugElement.getAttribute("name"));
         drug.setPharm(getElementTextContent(drugElement,"pharm"));
 
-        MedicalFulfillment fulfillment = MedicalFulfillment.valueOf(getElementTextContent(drugElement,"fulfillment").toUpperCase());
+        String fulfillmentContent = getElementTextContent(drugElement,"fulfillment").toUpperCase();
+        MedicalFulfillment fulfillment = MedicalFulfillment.valueOf(fulfillmentContent);
         drug.setFulfillment(fulfillment);
 
         int amount = Integer.parseInt(getElementTextContent(drugElement,"amount"));
@@ -88,14 +89,14 @@ public class DomParser implements Parser {
         long id = Long.parseLong(getElementTextContent(certificateElement,"id"));
         certificate.setId(id);
 
-        String issueDateStr= getElementTextContent(certificateElement,"issue-date");
-        String[] issueDate = issueDateStr.split("\\.");
+        String issueDateContent = getElementTextContent(certificateElement,"issue-date");
+        String[] issueDate = issueDateContent.split("\\.");
         certificate.setIssueDate(LocalDate.of(Integer.parseInt(issueDate[YEAR_INDEX]),
                                                 Integer.parseInt(issueDate[MONTH_INDEX]),
                                                 Integer.parseInt(issueDate[DAY_INDEX])));
 
-        String expirationDateStr= getElementTextContent(certificateElement,"expiration-date");
-        String[] expirationDate = expirationDateStr.split("\\.");
+        String expirationDateContent = getElementTextContent(certificateElement,"expiration-date");
+        String[] expirationDate = expirationDateContent.split("\\.");
         certificate.setExpirationDate(LocalDate.of(Integer.parseInt(expirationDate[YEAR_INDEX]),
                                                     Integer.parseInt(expirationDate[MONTH_INDEX]),
                                                     Integer.parseInt(expirationDate[DAY_INDEX])));

@@ -1,4 +1,4 @@
-package com.epam.xmlparsing.validator;
+package com.epam.xmlparsing.validator.errorhandler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

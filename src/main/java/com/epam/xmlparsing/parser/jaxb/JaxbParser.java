@@ -1,4 +1,4 @@
-package com.epam.xmlparsing.parser.jaxbparser;
+package com.epam.xmlparsing.parser.jaxb;
 
 import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.entity.Drug;

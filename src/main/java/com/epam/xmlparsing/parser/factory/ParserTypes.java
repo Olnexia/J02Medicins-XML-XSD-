@@ -1,9 +1,9 @@
 package com.epam.xmlparsing.parser.factory;
 
 import com.epam.xmlparsing.parser.Parser;
-import com.epam.xmlparsing.parser.domparser.DomParser;
-import com.epam.xmlparsing.parser.jaxbparser.JaxbParser;
-import com.epam.xmlparsing.parser.saxparser.SaxParser;
+import com.epam.xmlparsing.parser.dom.DomParser;
+import com.epam.xmlparsing.parser.jaxb.JaxbParser;
+import com.epam.xmlparsing.parser.sax.SaxParser;
 
 public enum ParserTypes {
     SAX {

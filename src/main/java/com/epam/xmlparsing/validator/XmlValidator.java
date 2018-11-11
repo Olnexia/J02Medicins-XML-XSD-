@@ -1,6 +1,7 @@
 package com.epam.xmlparsing.validator;
 
 import com.epam.xmlparsing.exception.ValidatorException;
+import com.epam.xmlparsing.validator.errorhandler.ValidationErrorHandler;
 import org.xml.sax.SAXException;
 import javax.xml.XMLConstants;
 import javax.xml.transform.Source;

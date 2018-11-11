@@ -13,7 +13,6 @@ public class PrescriptionalDrug extends Drug {
     private boolean narcotic;
 
     public PrescriptionalDrug(){
-
     }
 
     public PrescriptionalDrug(String name, String pharm, Certificate certificate, MedicalFulfillment fulfillment,

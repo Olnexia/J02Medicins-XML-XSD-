@@ -1,4 +1,4 @@
-package com.epam.xmlparsing.parser.saxparser;
+package com.epam.xmlparsing.parser.sax;
 
 import com.epam.xmlparsing.entity.Drug;
 import com.epam.xmlparsing.entity.MedicalFulfillment;
@@ -48,7 +48,8 @@ public class MedicinsHandler extends DefaultHandler {
                 current.setName(attributes.getValue(0));
                 break;
             default:
-                MedicinsElements temp = MedicinsElements.valueOf(localName.toUpperCase().replaceAll("-", "_"));
+                String enumLocalName = localName.toUpperCase().replaceAll("-", "_");
+                MedicinsElements temp = MedicinsElements.valueOf(enumLocalName);
                 if (withText.contains(temp)) {
                     currentEnum = temp;
                 }

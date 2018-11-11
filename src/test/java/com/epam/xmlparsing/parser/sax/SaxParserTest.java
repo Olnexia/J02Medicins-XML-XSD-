@@ -1,7 +1,8 @@
-package com.epam.xmlparsing.parser;
+package com.epam.xmlparsing.parser.sax;
 
 import com.epam.xmlparsing.entity.*;
 import com.epam.xmlparsing.exception.ParserException;
+import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.parser.factory.ParserFactory;
 import com.epam.xmlparsing.parser.factory.ParserTypes;
 import org.junit.Assert;
@@ -10,7 +11,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class SaxParserTest {
-
     private static final String INPUT_FILE = "src/test/resources/input.xml";
     private static final double DELTA = 0.001;
 
